@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prairie Pearl Accounting</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Nunito+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    .font-heading { font-family: 'Cormorant Garamond', serif; }
+    .font-body { font-family: 'Nunito Sans', sans-serif; }
+    .pearl-gradient { background: linear-gradient(135deg, #f7f3ee 0%, #ede6db 50%, #f0ebe3 100%); }
+    .gold-shimmer { background: linear-gradient(90deg, #b8860b, #d4a843, #b8860b); background-size: 200% 100%; animation: shimmer 3s ease-in-out infinite; }
+    @keyframes shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.8s ease-out forwards; opacity: 0; }
+    .fade-up-d1 { animation-delay: 0.1s; }
+    .fade-up-d2 { animation-delay: 0.3s; }
+    .fade-up-d3 { animation-delay: 0.5s; }
+    .fade-up-d4 { animation-delay: 0.7s; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body overflow-auto">
+  <div id="app" class="w-full h-full">
+   <!-- Navigation -->
+   <nav id="nav-bar" class="w-full px-6 md:px-12 py-4 flex items-center justify-between fixed top-0 z-50 transition-all duration-300" style="background: rgba(247,243,238,0.95); backdrop-filter: blur(8px);">
+    <div class="flex items-center gap-3">
+     <!-- Pearl Logo SVG -->
+     <svg width="40" height="40" viewbox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="16" fill="#f7f3ee" stroke="#b8860b" stroke-width="1.5" /> <circle cx="20" cy="20" r="12" fill="none" stroke="#d4a843" stroke-width="0.5" opacity="0.6" /> <ellipse cx="16" cy="16" rx="4" ry="3" fill="#ffffff" opacity="0.5" /> <path d="M8 28 C12 24, 16 22, 20 20 C24 18, 28 16, 32 12" stroke="#b8860b" stroke-width="0.8" fill="none" opacity="0.4" /> <!-- Wheat accent --> <path d="M30 8 L32 12 M30 8 L28 12 M30 8 L30 13" stroke="#8b7355" stroke-width="0.8" stroke-linecap="round" />
+     </svg>
+     <div>
+      <span id="nav-name" class="font-heading text-xl font-semibold" style="color: #3d2e1f;">Prairie Pearl</span> <span id="nav-tagline" class="block text-xs tracking-widest uppercase" style="color: #8b7355;">Accounting &amp; Advisory</span>
+     </div>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+     <a href="#services" class="text-sm font-semibold hover:opacity-70 transition" style="color: #3d2e1f;">Services</a> <a href="#shop" class="text-sm font-semibold hover:opacity-70 transition" style="color: #3d2e1f;">Shop</a> <a href="#about" class="text-sm font-semibold hover:opacity-70 transition" style="color: #3d2e1f;">About</a> <a href="#contact" class="text-sm font-semibold hover:opacity-70 transition" style="color: #3d2e1f;">Contact</a> <button id="nav-cta" class="px-5 py-2 rounded-full text-sm font-semibold text-white transition hover:scale-105" style="background-color: #6b8e63;">Book a Consultation</button>
+    </div><button id="mobile-menu-btn" class="md:hidden" style="color: #3d2e1f;" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"> <i data-lucide="menu" style="width:24px;height:24px;"></i> </button>
+   </nav><!-- Mobile Menu -->
+   <div id="mobile-menu" class="hidden fixed top-16 left-0 w-full z-40 p-6 flex flex-col gap-4 shadow-lg" style="background: #f7f3ee;">
+    <a href="#services" class="text-lg font-semibold" style="color: #3d2e1f;">Services</a> <a href="#shop" class="text-lg font-semibold" style="color: #3d2e1f;">Shop</a> <a href="#about" class="text-lg font-semibold" style="color: #3d2e1f;">About</a> <a href="#contact" class="text-lg font-semibold" style="color: #3d2e1f;">Contact</a> <button class="px-5 py-3 rounded-full text-white font-semibold" style="background-color: #6b8e63;">Book a Consultation</button>
+   </div><!-- Hero Section -->
+   <section class="w-full pearl-gradient pt-28 pb-20 md:pt-36 md:pb-32 px-6 md:px-12 relative overflow-hidden">
+    <!-- Decorative wheat pattern -->
+    <svg class="absolute top-10 right-0 opacity-10" width="300" height="400" viewbox="0 0 300 400" fill="none">
+     <path d="M150 400 C150 300, 120 250, 100 200 C80 150, 90 100, 150 50" stroke="#8b7355" stroke-width="2" fill="none" /> <ellipse cx="100" cy="180" rx="15" ry="8" fill="#8b7355" transform="rotate(-20 100 180)" /> <ellipse cx="110" cy="150" rx="15" ry="8" fill="#8b7355" transform="rotate(-30 110 150)" /> <ellipse cx="125" cy="120" rx="15" ry="8" fill="#8b7355" transform="rotate(-15 125 120)" /> <ellipse cx="135" cy="90" rx="12" ry="7" fill="#8b7355" transform="rotate(-25 135 90)" />
+    </svg>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+     <div class="gold-shimmer w-16 h-0.5 mx-auto mb-8 fade-up fade-up-d1 rounded-full"></div>
+     <h1 id="hero-heading" class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 fade-up fade-up-d2" style="color: #3d2e1f;">Financial Clarity for Growing Businesses</h1>
+     <p id="hero-subtext" class="text-lg md:text-xl max-w-2xl mx-auto mb-10 fade-up fade-up-d3" style="color: #5c4a38;">Trusted accounting services rooted in integrity, precision, and a deep understanding of rural and small-business communities.</p>
+     <div class="fade-up fade-up-d4 flex flex-col sm:flex-row gap-4 justify-center">
+      <button id="hero-cta" class="px-8 py-4 rounded-full text-white font-semibold text-lg transition hover:scale-105 shadow-lg" style="background-color: #6b8e63;"> Book a Consultation </button> <a href="#services" class="px-8 py-4 rounded-full font-semibold text-lg transition hover:scale-105 border-2" style="color: #3d2e1f; border-color: #6b8e63;"> Our Services </a>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section id="services" class="w-full py-20 px-6 md:px-12" style="background-color: #ffffff;">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4" style="color: #3d2e1f;">Our Services</h2>
+      <div class="gold-shimmer w-12 h-0.5 mx-auto rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-8 rounded-2xl border transition hover:shadow-xl hover:-translate-y-1" style="background: #faf8f5; border-color: #ede6db;">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style="background: #f0ebe3;">
+        <i data-lucide="calculator" style="width:28px;height:28px;color:#6b8e63;"></i>
+       </div>
+       <h3 class="font-heading text-2xl font-semibold mb-3" style="color: #3d2e1f;">Bookkeeping</h3>
+       <p style="color: #5c4a38;">Meticulous record-keeping that gives you confidence in every number. Monthly reconciliation, payroll, and financial statements.</p>
+      </div>
+      <div class="p-8 rounded-2xl border transition hover:shadow-xl hover:-translate-y-1" style="background: #faf8f5; border-color: #ede6db;">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style="background: #f0ebe3;">
+        <i data-lucide="file-text" style="width:28px;height:28px;color:#6b8e63;"></i>
+       </div>
+       <h3 class="font-heading text-2xl font-semibold mb-3" style="color: #3d2e1f;">Tax Planning</h3>
+       <p style="color: #5c4a38;">Strategic tax preparation and planning for individuals and businesses. Maximize deductions while staying fully compliant.</p>
+      </div>
+      <div class="p-8 rounded-2xl border transition hover:shadow-xl hover:-translate-y-1" style="background: #faf8f5; border-color: #ede6db;">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style="background: #f0ebe3;">
+        <i data-lucide="trending-up" style="width:28px;height:28px;color:#6b8e63;"></i>
+       </div>
+       <h3 class="font-heading text-2xl font-semibold mb-3" style="color: #3d2e1f;">Advisory</h3>
+       <p style="color: #5c4a38;">Forward-looking financial guidance to help you make confident decisions about growth, investment, and succession planning.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Shop Section -->
+   <section id="shop" class="w-full py-20 px-6 md:px-12" style="background-color: #f0f4f1;">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <h2 id="shop-heading" class="font-heading text-3xl md:text-5xl font-bold mb-4" style="color: #3d2e1f;">Digital Resources</h2>
+      <p style="color: #5c4a38;">Professionally designed templates and tools to streamline your accounting and business management.</p>
+      <div class="gold-shimmer w-12 h-0.5 mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 rounded-2xl border transition hover:shadow-xl hover:-translate-y-1" style="background: #ffffff; border-color: #d1dfd8;">
+       <div class="w-full h-32 rounded-lg mb-4 flex items-center justify-center" style="background: linear-gradient(135deg, #e8f1ed, #f0f8f4);">
+        <i data-lucide="file-spreadsheet" style="width:48px;height:48px;color:#4a7c5c;"></i>
+       </div>
+       <h3 class="font-heading text-xl font-semibold mb-2" style="color: #3d2e1f;">Expense Tracker</h3>
+       <p class="text-sm mb-4" style="color: #5c4a38;">Customizable spreadsheet template for tracking business expenses and categorizing costs.</p>
+       <div class="flex items-center justify-between"><span class="font-heading font-bold text-lg" style="color: #6b8e63;">$12.99</span> <button class="px-4 py-2 rounded-full text-white font-semibold text-sm transition hover:scale-105" style="background-color: #6b8e63;">Add to Cart</button>
+       </div>
+      </div>
+      <div class="p-6 rounded-2xl border transition hover:shadow-xl hover:-translate-y-1" style="background: #ffffff; border-color: #d1dfd8;">
+       <div class="w-full h-32 rounded-lg mb-4 flex items-center justify-center" style="background: linear-gradient(135deg, #e8f1ed, #f0f8f4);">
+        <i data-lucide="calendar" style="width:48px;height:48px;color:#4a7c5c;"></i>
+       </div>
+       <h3 class="font-heading text-xl font-semibold mb-2" style="color: #3d2e1f;">Tax Planning Guide</h3>
+       <p class="text-sm mb-4" style="color: #5c4a38;">Comprehensive PDF guide with tax deduction checklists and annual planning calendar.</p>
+       <div class="flex items-center justify-between"><span class="font-heading font-bold text-lg" style="color: #6b8e63;">$9.99</span> <button class="px-4 py-2 rounded-full text-white font-semibold text-sm transition hover:scale-105" style="background-color: #6b8e63;">Add to Cart</button>
+       </div>
+      </div>
+      <div class="p-6 rounded-2xl border transition hover:shadow-xl hover:-translate-y-1" style="background: #ffffff; border-color: #d1dfd8;">
+       <div class="w-full h-32 rounded-lg mb-4 flex items-center justify-center" style="background: linear-gradient(135deg, #e8f1ed, #f0f8f4);">
+        <i data-lucide="bar-chart-3" style="width:48px;height:48px;color:#4a7c5c;"></i>
+       </div>
+       <h3 class="font-heading text-xl font-semibold mb-2" style="color: #3d2e1f;">Profit &amp; Loss Dashboard</h3>
+       <p class="text-sm mb-4" style="color: #5c4a38;">Ready-to-use financial dashboard template for monitoring monthly performance metrics.</p>
+       <div class="flex items-center justify-between"><span class="font-heading font-bold text-lg" style="color: #6b8e63;">$14.99</span> <button class="px-4 py-2 rounded-full text-white font-semibold text-sm transition hover:scale-105" style="background-color: #6b8e63;">Add to Cart</button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="w-full py-20 px-6 md:px-12 pearl-gradient">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+     <div class="flex-1">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6" style="color: #3d2e1f;">Rooted in Community</h2>
+      <p class="text-lg mb-6 leading-relaxed" style="color: #5c4a38;">Prairie Pearl was founded on the belief that every business — from family farms to Main Street shops — deserves the same caliber of financial expertise as any big-city firm.</p>
+      <p class="text-lg leading-relaxed" style="color: #5c4a38;">We combine modern accounting technology with old-fashioned reliability. Your books are handled with the same care we'd give our own.</p>
+      <div class="mt-8 flex gap-8">
+       <div>
+        <span class="font-heading text-3xl font-bold" style="color: #6b8e63;">15+</span>
+        <p class="text-sm mt-1" style="color: #6b8e63;">Years Experience</p>
+       </div>
+       <div>
+        <span class="font-heading text-3xl font-bold" style="color: #6b8e63;">200+</span>
+        <p class="text-sm mt-1" style="color: #6b8e63;">Clients Served</p>
+       </div>
+       <div>
+        <span class="font-heading text-3xl font-bold" style="color: #6b8e63;">100%</span>
+        <p class="text-sm mt-1" style="color: #6b8e63;">Commitment</p>
+       </div>
+      </div>
+     </div>
+     <div class="flex-1 flex justify-center">
+      <div class="w-72 h-72 rounded-full flex items-center justify-center relative" style="background: linear-gradient(135deg, #ede6db, #f7f3ee);">
+       <svg width="120" height="120" viewbox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="50" fill="#f7f3ee" stroke="#b8860b" stroke-width="2" /> <circle cx="60" cy="60" r="38" fill="none" stroke="#d4a843" stroke-width="0.8" opacity="0.5" /> <ellipse cx="48" cy="48" rx="10" ry="7" fill="#ffffff" opacity="0.6" /> <path d="M25 85 C40 70, 55 60, 60 55 C65 50, 80 40, 95 30" stroke="#b8860b" stroke-width="1" fill="none" opacity="0.3" /> <!-- Wheat stalks --> <path d="M80 25 L85 35 M80 25 L75 35 M80 25 L80 38" stroke="#8b7355" stroke-width="1.2" stroke-linecap="round" /> <path d="M90 35 L93 43 M90 35 L87 43 M90 35 L90 46" stroke="#8b7355" stroke-width="1" stroke-linecap="round" />
+       </svg>
+       <div class="absolute inset-0 rounded-full border-2 opacity-30" style="border-color: #b8860b;"></div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="w-full py-20 px-6 md:px-12" style="background-color: #ffffff;">
+    <div class="max-w-4xl mx-auto">
+     <div class="text-center mb-12">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4" style="color: #3d2e1f;">Get in Touch</h2>
+      <p style="color: #5c4a38;">Ready to take control of your finances? We'd love to hear from you.</p>
+      <div class="gold-shimmer w-12 h-0.5 mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12">
+      <form id="contact-form" class="space-y-5" onsubmit="event.preventDefault(); document.getElementById('form-success').classList.remove('hidden'); this.reset();">
+       <div>
+        <label for="name" class="block text-sm font-semibold mb-1" style="color: #3d2e1f;">Name</label> <input id="name" type="text" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition" style="border-color: #ede6db; background: #faf8f5; --tw-ring-color: #b8860b;" placeholder="Your name">
+       </div>
+       <div>
+        <label for="email" class="block text-sm font-semibold mb-1" style="color: #3d2e1f;">Email</label> <input id="email" type="email" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition" style="border-color: #ede6db; background: #faf8f5;" placeholder="you@example.com">
+       </div>
+       <div>
+        <label for="message" class="block text-sm font-semibold mb-1" style="color: #3d2e1f;">Message</label> <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition resize-none" style="border-color: #ede6db; background: #faf8f5;" placeholder="How can we help?"></textarea>
+       </div><button type="submit" class="w-full px-6 py-4 rounded-full text-white font-semibold transition hover:scale-105 shadow-lg" style="background-color: #b8860b;">Send Message</button>
+      </form>
+      <div class="space-y-6 flex flex-col justify-center">
+       <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #f0ebe3;">
+         <i data-lucide="map-pin" style="width:20px;height:20px;color:#6b8e63;"></i>
+        </div>
+        <div>
+         <h4 class="font-semibold" style="color: #3d2e1f;">Location</h4>
+         <p style="color: #5c4a38;">123 Main Street, Prairie Town</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #f0ebe3;">
+         <i data-lucide="phone" style="width:20px;height:20px;color:#6b8e63;"></i>
+        </div>
+        <div>
+         <h4 class="font-semibold" style="color: #3d2e1f;">Phone</h4>
+         <p style="color: #5c4a38;">(555) 123-4567</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #f0ebe3;">
+         <i data-lucide="mail" style="width:20px;height:20px;color:#6b8e63;"></i>
+        </div>
+        <div>
+         <h4 class="font-semibold" style="color: #3d2e1f;">Email</h4>
+         <p style="color: #5c4a38;">hello@prairiepearl.com</p>
+        </div>
+       </div>
+       <div id="form-success" class="hidden p-4 rounded-lg text-center" style="background: #f0ebe3; color: #3d2e1f;">
+        <i data-lucide="check-circle" style="width:24px;height:24px;color:#6b8e63;display:inline;"></i>
+        <p class="font-semibold mt-2">Message sent! We'll be in touch soon.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="w-full py-10 px-6 md:px-12 text-center" style="background: #3d2e1f;">
+    <p class="font-heading text-lg" style="color: #d4a843;">Prairie Pearl</p>
+    <p class="text-sm mt-2" style="color: #8b7355;">© 2024 Prairie Pearl Accounting &amp; Advisory. All rights reserved.</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      business_name: 'Prairie Pearl',
+      tagline: 'Accounting & Advisory',
+      hero_heading: 'Financial Clarity for Growing Businesses',
+      hero_subtext: 'Trusted accounting services rooted in integrity, precision, and a deep understanding of rural and small-business communities.',
+      cta_text: 'Book a Consultation',
+      shop_heading: 'Digital Resources',
+      background_color: '#f7f3ee',
+      surface_color: '#ffffff',
+      text_color: '#3d2e1f',
+      primary_action: '#6b8e63',
+      secondary_action: '#4a7c5c',
+      accent_color: '#5ba3a3',
+      font_family: 'Cormorant Garamond',
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const c = { ...defaultConfig, ...config };
+
+      document.getElementById('nav-name').textContent = c.business_name;
+      document.getElementById('nav-tagline').textContent = c.tagline;
+      document.getElementById('hero-heading').textContent = c.hero_heading;
+      document.getElementById('hero-subtext').textContent = c.hero_subtext;
+      document.getElementById('hero-cta').textContent = c.cta_text;
+      document.getElementById('nav-cta').textContent = c.cta_text;
+      document.getElementById('shop-heading').textContent = c.shop_heading;
+
+      // Colors
+      document.querySelectorAll('[style*="background-color: #b8860b"]').forEach(el => el.style.backgroundColor = c.primary_action);
+      document.querySelectorAll('[style*="color: #3d2e1f"]').forEach(el => el.style.color = c.text_color);
+      document.querySelectorAll('[style*="color: #b8860b"]').forEach(el => el.style.color = c.primary_action);
+      document.querySelectorAll('[style*="color: #8b7355"]').forEach(el => el.style.color = c.secondary_action);
+
+      // Font
+      const headingFont = `${c.font_family}, serif`;
+      document.querySelectorAll('.font-heading').forEach(el => el.style.fontFamily = headingFont);
+
+      // Font size
+      const base = c.font_size;
+      document.querySelectorAll('p').forEach(el => el.style.fontSize = `${base}px`);
+      document.querySelectorAll('h1').forEach(el => el.style.fontSize = `${base * 3.5}px`);
+      document.querySelectorAll('h2').forEach(el => el.style.fontSize = `${base * 2.5}px`);
+      document.querySelectorAll('h3').forEach(el => el.style.fontSize = `${base * 1.5}px`);
+    }
+
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange,
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+          { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => config.primary_action || defaultConfig.primary_action, set: (v) => { config.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); } },
+          { get: () => config.secondary_action || defaultConfig.secondary_action, set: (v) => { config.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); } }
+        ],
+        borderables: [],
+        fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+        fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['business_name', config.business_name || defaultConfig.business_name],
+        ['tagline', config.tagline || defaultConfig.tagline],
+        ['hero_heading', config.hero_heading || defaultConfig.hero_heading],
+        ['hero_subtext', config.hero_subtext || defaultConfig.hero_subtext],
+        ['cta_text', config.cta_text || defaultConfig.cta_text],
+        ['shop_heading', config.shop_heading || defaultConfig.shop_heading]
+      ])
+    });
+
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f518f7d6768f0a1',t:'MTc3NzY2NzU5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
